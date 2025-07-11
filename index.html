@@ -1,20 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Friday Jackpot</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friday Members Jackpot</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    #jackpot-display {
+      font-size: 6vw;
+      font-weight: bold;
+      color: white;
+      text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
+      position: absolute;
+      top: 47%;
+      width: 100%;
+      text-align: center;
+      transform: translateY(-50%);
+    }
+  </style>
 </head>
 <body>
-  <h1>Current Jackpot:</h1>
-  <p id="cell-value">Loading...</p>
+  <div id="jackpot-display">Loading...</div>
 
   <script>
     fetch("https://raw.githubusercontent.com/YarraGolf/friday-jackpot-viewer/main/data.json")
       .then(response => response.json())
       .then(data => {
-        document.getElementById("cell-value").innerText = data.value;
+        document.getElementById("jackpot-display").innerText = data.value;
       })
       .catch(() => {
-        document.getElementById("cell-value").innerText = "Error loading jackpot.";
+        document.getElementById("jackpot-display").innerText = "Error loading jackpot";
       });
   </script>
 </body>
