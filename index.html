@@ -7,7 +7,7 @@
   <h1>Live Value: <span id="cell-value">Loading...</span></h1>
 
   <script>
-    fetch("https://yarragolf-my.sharepoint.com/:f:/g/personal/rob_alexander_yarragolf_com_au/EvlaED8viAlLj8FaV1L6TYYB-O4hsN2HRFMCJJ6v_n43Iw?e=1cJeqN")
+    fetch("https://raw.githubusercontent.com/YarraGolf/friday-jackpot-viewer/main/data.json")
       .then(response => response.json())
       .then(data => {
         document.getElementById("cell-value").innerText = data.value;
