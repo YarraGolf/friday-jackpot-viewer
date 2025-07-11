@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Live Excel Cell Value</title>
+  <title>Friday Jackpot</title>
 </head>
 <body>
-  <h1>Live Value: <span id="cell-value">Loading...</span></h1>
+  <h1>Current Jackpot:</h1>
+  <p id="cell-value">Loading...</p>
 
   <script>
     fetch("https://raw.githubusercontent.com/YarraGolf/friday-jackpot-viewer/main/data.json")
@@ -12,9 +13,8 @@
       .then(data => {
         document.getElementById("cell-value").innerText = data.value;
       })
-      .catch(error => {
-        document.getElementById("cell-value").innerText = "Failed to load.";
-        console.error(error);
+      .catch(() => {
+        document.getElementById("cell-value").innerText = "Error loading jackpot.";
       });
   </script>
 </body>
