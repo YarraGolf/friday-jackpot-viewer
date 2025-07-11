@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Excel Cell Value</title>
+</head>
+<body>
+  <h1>Live Value: <span id="cell-value">Loading...</span></h1>
+
+  <script>
+    fetch("https://your-endpoint.com/data.json")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("cell-value").innerText = data.value;
+      })
+      .catch(error => {
+        document.getElementById("cell-value").innerText = "Failed to load.";
+        console.error(error);
+      });
+  </script>
+</body>
+</html>
