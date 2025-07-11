@@ -17,15 +17,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* If the screen is in landscape orientation */
-@media screen and (orientation: landscape) {
-  body {
-    background: url('background-landscape.jpg') no-repeat center center fixed;
-    background-size: cover;
-  }
-}
-
-    #jackpot-display {
+#jackpot-display {
   font-size: 26vw;
   font-weight: bold;
   color: white;
@@ -50,6 +42,19 @@
     text-shadow: 0 0 30px rgba(255, 255, 255, 1),
                  0 0 60px rgba(255, 255, 255, 0.7),
                  0 0 80px rgba(255, 215, 0, 0.9);
+  }
+}
+
+/* Landscape-specific background and text adjustments */
+@media screen and (orientation: landscape) {
+  body {
+    background: url('background-landscape.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  #jackpot-display {
+    font-size: 17vw;
+    top: 46%;
   }
 }
 
