@@ -1,0 +1,1 @@
+"{""value"":""" & outputs('Compose_Value') & """, ""updated"":""" & utcNow() & """}"
