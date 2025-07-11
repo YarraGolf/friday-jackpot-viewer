@@ -12,10 +12,18 @@
     }
 
     body {
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: Arial, sans-serif;
-    }
+  background: url('background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+
+/* If the screen is in landscape orientation */
+@media screen and (orientation: landscape) {
+  body {
+    background: url('background-landscape.jpg') no-repeat center center fixed;
+    background-size: cover;
+  }
+}
 
     #jackpot-display {
   font-size: 26vw;
