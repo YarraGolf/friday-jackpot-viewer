@@ -30,7 +30,19 @@
   text-align: center;
   transform: translateY(-50%);
   animation: pulse-glow 2.5s ease-in-out infinite;
+  z-index: 10;
+position: relative;
+
 }
+
+#sparkles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
 
 @keyframes pulse-glow {
   0%, 100% {
@@ -62,6 +74,7 @@
 </head>
 <body>
   <div id="jackpot-display">Loading...</div>
+<canvas id="sparkles"></canvas>
 
   <script>
     fetch("https://raw.githubusercontent.com/YarraGolf/friday-jackpot-viewer/main/data.json")
@@ -73,5 +86,59 @@
         document.getElementById("jackpot-display").innerText = "Error loading jackpot";
       });
   </script>
+  <script>
+  const canvas = document.getElementById("sparkles");
+  const ctx = canvas.getContext("2d");
+  let w, h;
+  let particles = [];
+
+  function resizeCanvas() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 2 + 1,
+      d: Math.random() * 1
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = "rgba(255,255,255,0.8)";
+    for (let i = 0; i < particles.length; i++) {
+      let p = particles[i];
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+      ctx.fill();
+    }
+    update();
+  }
+
+  function update() {
+    for (let i = 0; i < particles.length; i++) {
+      let p = particles[i];
+      p.y += p.d;
+      if (p.y > h) {
+        p.y = 0;
+        p.x = Math.random() * w;
+      }
+    }
+  }
+
+  function animate() {
+    draw();
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
+
 </body>
 </html>
